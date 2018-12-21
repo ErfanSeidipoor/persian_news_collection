@@ -6,8 +6,8 @@ const mongoose = require('mongoose')
 const router = require('./router')
 const updateNews = require('./updateNews')
 const config = require('./config');
-// ------------------------------|  DB Setup  |---------------------------- //
 
+// ------------------------------|  DB Setup  |---------------------------- //
 mongoose.connect(config.db_address, { useNewUrlParser: true });
 mongoose.set('useCreateIndex', true);
 
