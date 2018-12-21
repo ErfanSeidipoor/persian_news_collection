@@ -15,11 +15,12 @@ module.exports = ()=>{
     setInterval(() => {
         irna.allNews(newsArray=>{
             for (let index = 0; index < newsArray.length; index+=1) {
-                const newOne = new News(newsArray[index])
-                newOne.save( err => {
-                    if(err) { return console.log("err >> title:",newsArray[index].title)}
-                    return console.log("suc >> pubDate:",newsArray[index].date)
+                now = new Date(); 
+                const newOne = new News({
+                    ...newsArray[index],
+                    dbDate: new Date(now.getTime()+index)
                 })
+                newOne.save( err => {})
             }
         });
     }, 5000);

@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const autoIncrement = require('mongoose-auto-increment');
+
+const config = require('../config');
+var connection = mongoose.createConnection(config.db_address);
+autoIncrement.initialize(connection);
 
 // Define Schema
 const newsSchema = new Schema({
@@ -7,11 +12,13 @@ const newsSchema = new Schema({
     description: String,
     url:  {type: String, unique: true, lowercase: true},
     imageurl: String,
-    date: { type: Date, default: Date.now },
+    pubDate: { type: Date, default: Date.now },
+    dbDate: { type: Date, default: Date.now },
 })
 
+newsSchema.plugin(autoIncrement.plugin, { model: 'news', field: 'newsId' });
 // Create The Model Class
-const ModelClass = mongoose.model('news',newsSchema)
-
+// const ModelClass = mongoose.model('news',newsSchema)
+const ModelClass = connection.model('news', newsSchema);
 // Export the models
 module.exports = ModelClass;

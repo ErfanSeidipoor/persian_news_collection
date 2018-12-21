@@ -19,7 +19,7 @@ exports.allNews = (callback)=>{
                 description,
                 url: item.link,
                 imageurl: item['media:content'].url,
-                date: Date.parse(item.pubDate),
+                pubDate: Date.parse(item.pubDate),
             })
         })
         return callback(NewsArray);
