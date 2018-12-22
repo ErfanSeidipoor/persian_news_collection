@@ -9,8 +9,10 @@ autoIncrement.initialize(connection);
 // Define Schema
 const newsSchema = new Schema({
     title: String,
+    agency: String,
+    language: String,
     description: String,
-    url:  {type: String, unique: true, lowercase: true},
+    url: {type: String, unique: true, lowercase: true},
     imageurl: String,
     pubDate: { type: Date, default: Date.now },
     dbDate: { type: Date, default: Date.now },

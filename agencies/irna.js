@@ -20,6 +20,8 @@ exports.allNews = (callback)=>{
                 url: item.link,
                 imageurl: item['media:content'].url,
                 pubDate: Date.parse(item.pubDate),
+                agency: "irna",
+                language: "en",
             })
         })
         return callback(NewsArray);
