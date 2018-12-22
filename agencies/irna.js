@@ -4,7 +4,7 @@ var parser = require('xml2json');
 exports.allNews = (callback)=>{
     const  options = { 
         method: 'GET',
-        url: 'http://www.irna.ir/en/rss.aspx',
+        url: 'http://www.irna.ir/en/rss.aspx' ,
     };
     request(options, (error, response, body) => {
         if (error) return null;
